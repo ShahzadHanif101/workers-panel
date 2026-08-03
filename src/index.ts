@@ -11,8 +11,10 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { router } from "./lib/router";
+
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response("Hello World!");
+	async fetch(request: Request): Promise<Response> {
+		return router(request);
 	},
 } satisfies ExportedHandler<Env>;
